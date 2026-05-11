@@ -1,0 +1,59 @@
+description: Butler Data Repository Export
+version: 1.0.2
+universe_version: 7
+universe_namespace: daf_butler
+data:
+- type: dimension
+  element: instrument
+  records:
+  - name: LATISS
+    visit_max: 6050123199999
+    visit_system: 2
+    exposure_max: 6050123199999
+    detector_max: 1
+    class_name: lsst.obs.lsst.Latiss
+- type: dimension
+  element: detector
+  records:
+  - instrument: LATISS
+    id: 0
+    full_name: RXX_S00
+    name_in_raft: RXX_S00
+    raft: null
+    purpose: SCIENCE
+- type: collection
+  collection_type: CALIBRATION
+  name: LATISS/calib/DM-46359/isrTaskLSST_lowerSetTemp/ptc.20241014a
+- type: collection
+  collection_type: RUN
+  name: LATISS/calib/DM-46359/isrTaskLSST_lowerSetTemp/ptcGen.20241014a/20241014T181213Z
+  host: null
+  timespan_begin: null
+  timespan_end: null
+- type: dataset_type
+  name: ptc
+  dimensions:
+  - instrument
+  - detector
+  storage_class: PhotonTransferCurveDataset
+  is_calibration: true
+- type: dataset
+  dataset_type: ptc
+  run: LATISS/calib/DM-46359/isrTaskLSST_lowerSetTemp/ptcGen.20241014a/20241014T181213Z
+  records:
+  - dataset_id:
+    - !uuid '4602bc4a-03f2-4790-bcf3-684218f95b93'
+    data_id:
+    - instrument: LATISS
+      detector: 0
+    path: LATISS/calib/DM-46359/isrTaskLSST_lowerSetTemp/ptcGen.20241014a/20241014T181213Z/ptc/ptc_LATISS_RXX_S00_LATISS_calib_DM-46359_isrTaskLSST_lowerSetTemp_ptcGen_20241014a_20241014T181213Z.fits
+    formatter: lsst.obs.base.formatters.fitsGeneric.FitsGenericFormatter
+- type: associations
+  collection: LATISS/calib
+  collection_type: CALIBRATION
+  validity_ranges:
+  - timespan: !lsst.daf.butler.Timespan
+      begin: null
+      end: null
+    dataset_ids:
+    - !uuid '4602bc4a-03f2-4790-bcf3-684218f95b93'
